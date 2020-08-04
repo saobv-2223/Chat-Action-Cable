@@ -8,4 +8,6 @@ Rails.application.routes.draw do
                sign_up: "registration",
                sign_out: "logout"
              }
+
+  get "chat", to: "chats#index"
 end
