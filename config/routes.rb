@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => "/cable"
+
   root "homes#index"
 
   devise_for :users,
@@ -9,5 +11,7 @@ Rails.application.routes.draw do
                sign_out: "logout"
              }
 
-  get "chat", to: "chats#index"
+  get "message", to: "messages#index"
+  post "message", to: "messages#create"
+  get "message/:id", to: "messages#show", as: "show_messages"
 end

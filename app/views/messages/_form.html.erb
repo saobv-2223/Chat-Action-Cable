@@ -1,0 +1,13 @@
+<div class="card-footer">
+  <%= form_for @msg, url: message_path, method: :post, remote: true do |f| %>
+    <div class="input-group">
+      <%= f.hidden_field :sender_id, value: current_user.id %>
+      <%= f.hidden_field :receiver_id, value: @partner_user.id %>
+      <%= f.text_field :message, class: "form-control type_msg" %>
+      <div class="input-group-append">
+        <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%= javascript_pack_tag "messages" %>
