@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_04_015752) do
+ActiveRecord::Schema.define(version: 2020_08_04_052940) do
+
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "message"
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.index ["receiver_id"], name: "fk_rails_67c67d2963"
+    t.index ["sender_id"], name: "fk_rails_b8f26a382d"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,4 +32,6 @@ ActiveRecord::Schema.define(version: 2020_08_04_015752) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "messages", "users", column: "receiver_id"
+  add_foreign_key "messages", "users", column: "sender_id"
 end
