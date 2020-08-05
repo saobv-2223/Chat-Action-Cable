@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
   def index
-    render template: "layouts/index"
+    render "layouts/index"
   end
 end

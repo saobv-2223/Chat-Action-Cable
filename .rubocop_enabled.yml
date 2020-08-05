@@ -696,7 +696,7 @@ Lint/UnreachableCode:
 
 Lint/UselessAccessModifier:
   Description: "Checks for useless access modifiers."
-  Enabled: true
+  Enabled: false
 
 Lint/UselessAssignment:
   Description: "Checks for useless assignment to a local variable."

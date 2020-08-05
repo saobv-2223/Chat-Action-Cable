@@ -6,15 +6,14 @@ class MessagesController < ApplicationController
 
   def show
     @msg = Message.new
-    @messages = Message.message current_user.id, params[:id]
+    @messages = Message.get_messages current_user.id, params[:id]
   end
 
   def create
-    msg = Message.new message_params
-    return unless msg.save
+    message = Message.new message_params
+    return unless message.save
 
-    ActionCable.server.broadcast "room_channel:#{msg.receiver_id}", message: msg.message, sender_id: msg.sender_id
-    ActionCable.server.broadcast "room_channel:#{current_user.id}", message: msg.message, sender_id: msg.sender_id
+    message.send_message
   end
 
   private

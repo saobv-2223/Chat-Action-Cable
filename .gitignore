@@ -42,3 +42,6 @@ yarn-debug.log*
 test
 config/database.yml
 .idea
+
+# Ignore application configuration
+/config/application.yml
